@@ -8,24 +8,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 public class ActividadPrincipal extends AppCompatActivity {
+    WebView navegador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setContentView(R.layout.activity_main);
+        navegador = (WebView) findViewById(R.id.webkit);
+        navegador.getSettings().setJavaScriptEnabled(true);
+        navegador.getSettings().setBuiltInZoomControls(false);
+        navegador.loadUrl("file:///android_asset/index.html");
     }
 
     @Override
